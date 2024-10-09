@@ -7,12 +7,13 @@ return {
         "bash",
         "c",
         "java",
+        "json",
         "html",
         "javascript",
         "typescript",
         "json",
         "xml",
-        "lua",  
+        "lua",
         "markdown",
         "markdown_inline",
         "python",
@@ -29,11 +30,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
-        "tsx",
-        "typescript",
-      })
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "json", "json5", "jsonc" })
+      end
     end,
   },
 }

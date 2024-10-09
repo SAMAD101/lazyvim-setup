@@ -12,7 +12,6 @@ return {
     },
   },
 
-  -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -60,6 +59,14 @@ return {
         terraformls = {
           filetypes = { "terraform", "tf", "terraform-vars" },
         },
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require("schemastore").json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -75,7 +82,15 @@ return {
       },
     },
   },
-
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        json = { "prettier" },
+        jsonc = { "prettier" },
+      },
+    },
+  },
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
