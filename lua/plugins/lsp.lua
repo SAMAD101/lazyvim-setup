@@ -59,14 +59,6 @@ return {
         terraformls = {
           filetypes = { "terraform", "tf", "terraform-vars" },
         },
-        jsonls = {
-          settings = {
-            json = {
-              schemas = require("schemastore").json.schemas(),
-              validate = { enable = true },
-            },
-          },
-        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -79,15 +71,6 @@ return {
         end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
-      },
-    },
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        json = { "prettier" },
-        jsonc = { "prettier" },
       },
     },
   },
