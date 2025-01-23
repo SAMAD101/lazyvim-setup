@@ -22,7 +22,6 @@ return {
     opts = {
       ensure_installed = {
         "rust_analyzer",
-        "tsserver",
         "eslint",
         "terraformls",
       },
